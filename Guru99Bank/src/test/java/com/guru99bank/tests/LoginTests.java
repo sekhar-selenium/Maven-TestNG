@@ -1,5 +1,7 @@
 package com.guru99bank.tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,25 +16,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests {
 	// Initialization of variables
-	WebDriver driver = null;
-	String propertyKey = null;
-	String geckoDriverPath = null;
-	String bankURL = "http://www.demo.guru99.com/V4/";
-	String userId = "mngr51699";
-	String password = "mAhUqAj";
-	String expectedTitle = "Guru99 Bank Manager HomePage";
-	String homePageTitle = "Guru99 Bank Home Page";
-	String expectedHeadline = "Guru99 Bank";
-
-	// ------------- Page Objects ----------------//
-	// ------- xPath ---------------//
-	String uid = "//input[@name='uid']";
-	String pid = "//input[@name='password']";
-	String logButton = "//input[@name='btnLogin']";
-	String mgrId = "//tr[@class='heading3']/td";
-
-	// -------- CSS Selector -----------//
-	String check1 = ".barone";
+	static WebDriver driver;
 
 	// Browser selection
 	// 1 - Firefox
@@ -42,14 +26,10 @@ public class LoginTests {
 	@BeforeClass
 	public void setup() {
 		if (Browser == 1) {
-			propertyKey = "webdriver.gecko.driver";
-			geckoDriverPath = "C:\\Vijay\\Automation\\GeckoDrivers\\Firefox\\geckodriver.exe";
-			System.setProperty(propertyKey, geckoDriverPath);
+			System.setProperty(Repository.ffPropertyKey, Repository.ffGeckoDriverPath);
 			driver = new FirefoxDriver();
 		} else if (Browser == 2) {
-			propertyKey = "webdriver.chrome.driver";
-			geckoDriverPath = "C:\\Vijay\\Automation\\GeckoDrivers\\chrome\\chromedriver.exe";
-			System.setProperty(propertyKey, geckoDriverPath);
+			System.setProperty(Repository.chromePropertyKey, Repository.chromeGeckoDriverPath);
 			driver = new ChromeDriver();
 		}
 		driver.manage().window().maximize();
@@ -57,17 +37,17 @@ public class LoginTests {
 
 	@Test
 	public void pageLoad() {
-		driver.get(bankURL);
-
+		driver.get(Repository.bankURL);
+		driver.manage().timeouts().implicitlyWait(Repository.WaitTime,TimeUnit.SECONDS);
 		// Assertion on the title of the page
-		Assert.assertEquals(driver.getTitle(), homePageTitle);
+		Assert.assertEquals(driver.getTitle(), Repository.homePageTitle);
 	}
 
 	@Test(dependsOnMethods = "pageLoad")
 	public void Login() {
-		driver.findElement(By.xpath(uid)).sendKeys(userId);
-		driver.findElement(By.xpath(pid)).sendKeys(password);
-		driver.findElement(By.xpath(logButton)).click();
+		driver.findElement(By.xpath(Repository.uid)).sendKeys(Repository.userId);
+		driver.findElement(By.xpath(Repository.pid)).sendKeys(Repository.password);
+		driver.findElement(By.xpath(Repository.logButton)).click();
 
 		// Explicit Wait conditions
 		// WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -75,14 +55,14 @@ public class LoginTests {
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(mgrId)));
 		// String mgrLkt = mgrIdText.getText();
 
-		String mgrLkt = driver.findElement(By.xpath(mgrId)).getText();
+		String mgrLkt = driver.findElement(By.xpath(Repository.mgrId)).getText();
 		String ManagerId = mgrLkt.substring(12, mgrLkt.length());
 
 		// Assertions on the page
-		Assert.assertEquals(driver.findElement(By.cssSelector(check1))
-				.getText(), expectedHeadline);
-		Assert.assertEquals(driver.getTitle(), expectedTitle);
-		Assert.assertEquals(ManagerId, userId);
+		Assert.assertEquals(driver.findElement(By.cssSelector(Repository.check1))
+				.getText(), Repository.expectedHeadline);
+		Assert.assertEquals(driver.getTitle(), Repository.expectedTitle);
+		Assert.assertEquals(ManagerId, Repository.userId);
 	}
 
 	@AfterClass

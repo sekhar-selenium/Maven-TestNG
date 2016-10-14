@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5605" started-at="2016-10-13T22:01:02Z" finished-at="2016-10-13T22:01:07Z">
+  <suite name="Default suite" duration-ms="6362" started-at="2016-10-14T18:35:57Z" finished-at="2016-10-14T18:36:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5605" started-at="2016-10-13T22:01:02Z" finished-at="2016-10-13T22:01:07Z">
+    <test name="Default test" duration-ms="6362" started-at="2016-10-14T18:35:57Z" finished-at="2016-10-14T18:36:03Z">
       <class name="com.guru99bank.tests.LoginTests">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.guru99bank.tests.LoginTests@36c88a32]" name="setup" is-config="true" duration-ms="1877" started-at="2016-10-14T03:31:02Z" finished-at="2016-10-14T03:31:03Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.guru99bank.tests.LoginTests@475530b9]" name="setup" is-config="true" duration-ms="1949" started-at="2016-10-15T00:05:57Z" finished-at="2016-10-15T00:05:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="pageLoad()[pri:0, instance:com.guru99bank.tests.LoginTests@36c88a32]" name="pageLoad" duration-ms="1455" started-at="2016-10-14T03:31:03Z" finished-at="2016-10-14T03:31:05Z">
+        <test-method status="PASS" signature="pageLoad()[pri:0, instance:com.guru99bank.tests.LoginTests@475530b9]" name="pageLoad" duration-ms="1856" started-at="2016-10-15T00:05:59Z" finished-at="2016-10-15T00:06:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageLoad -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:com.guru99bank.tests.LoginTests@36c88a32]" name="Login" duration-ms="1319" started-at="2016-10-14T03:31:05Z" depends-on-methods="com.guru99bank.tests.LoginTests.pageLoad" finished-at="2016-10-14T03:31:06Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:com.guru99bank.tests.LoginTests@475530b9]" name="Login" duration-ms="1486" started-at="2016-10-15T00:06:01Z" depends-on-methods="com.guru99bank.tests.LoginTests.pageLoad" finished-at="2016-10-15T00:06:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.guru99bank.tests.LoginTests@36c88a32]" name="tearDown" is-config="true" duration-ms="936" started-at="2016-10-14T03:31:06Z" finished-at="2016-10-14T03:31:07Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.guru99bank.tests.LoginTests@475530b9]" name="tearDown" is-config="true" duration-ms="1052" started-at="2016-10-15T00:06:02Z" finished-at="2016-10-15T00:06:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
